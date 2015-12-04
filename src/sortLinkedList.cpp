@@ -19,24 +19,20 @@ struct node {
 };
 typedef struct  node *lptr;
 struct node * sortLinkedList(struct node *head) {
-	lptr t = head, p = NULL,index=NULL;
-	int no,temp;
-	while (t != NULL)
+	lptr t = NULL, p = NULL,index=NULL;
+	int temp;
+	
+	for (t = head; t != NULL; t = t->next)
 	{
-		index = t;
-		no = t->num;
 		for (p = t; p != NULL; p = p->next)
 		{
-			if (no < p->num)
+			if (t->num>p->num)
 			{
-				no = p->num;
-				index = p;
+				temp = t->num;
+				t->num = p->num;
+				p->num = temp;
 			}
 		}
-		index->num = t->num;
-		index->num = no;
-		t = t->next;
 	}
 	return head;
-
 }

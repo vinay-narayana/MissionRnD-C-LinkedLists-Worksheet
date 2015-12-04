@@ -20,24 +20,6 @@ struct node {
 	struct node *next;
 };
 typedef struct node *lptr;
-
-lptr insertend(lptr head, int x)
-{
-	lptr p, t;
-	p = (lptr)malloc(sizeof(struct node));
-	p->data = x;
-	p->next = NULL;
-	if (head == NULL)
-	{
-		head = p;
-		return head;
-	}
-	t = head;
-	while (t->next != NULL)
-		t = t->next;
-	t->next = p;
-	return head;
-}
 void sll_012_sort(struct node *head)
 {
 	lptr t = head;
@@ -52,20 +34,23 @@ void sll_012_sort(struct node *head)
 			two++;
 		t = t->next;
 	}
-	head = NULL;
+	t = head;
 	while (zero != 0)
 	{
-		head = insertend(head, 0);
+		t->data = 0;
+		t = t->next;
 		zero--;
 	}
 	while (one != 0)
 	{
-		head = insertend(head, 1);
+		t->data = 1;
+		t = t->next;
 		one--;
 	}
 	while (two != 0)
 	{
-		head = insertend(head, 2);
+		t->data = 2;
+		t = t->next;
 		two--;
 	}
 }

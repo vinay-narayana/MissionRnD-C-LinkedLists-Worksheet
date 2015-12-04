@@ -26,12 +26,15 @@ struct node * removeEveryKthNode(struct node *head, int K)
 	int i=0;
 	if (head == NULL || K <=1)
 		return NULL;
-	while (t->next != NULL)
+	while (t != NULL)
 	{
 		i++;
 		if (i == K - 1)
 		{
-			t->next = (t->next)->next;
+			if (t->next == NULL)
+				t->next = NULL;
+			else
+				t->next = (t->next)->next;
 			i = 0;
 		}
 		t = t->next;

@@ -17,7 +17,26 @@ struct node {
 	int num;
 	struct node *next;
 };
-
+typedef struct  node *lptr;
 struct node * sortLinkedList(struct node *head) {
-	return NULL;
+	lptr t = head, p = NULL,index=NULL;
+	int no,temp;
+	while (t != NULL)
+	{
+		index = t;
+		no = t->num;
+		for (p = t; p != NULL; p = p->next)
+		{
+			if (no < p->num)
+			{
+				no = p->num;
+				index = p;
+			}
+		}
+		index->num = t->num;
+		index->num = no;
+		t = t->next;
+	}
+	return head;
+
 }
